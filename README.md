@@ -134,6 +134,12 @@ debian: sudo aptitude install supervisor
     sup clean all
 ```
 
+## 4, docker镜像构建的方式
+```text
+source env.bash
+./dbuild.sh
+```
+
 ## 5, 部署上的调试模式
 ```text
 进入指定的app, 执行:
