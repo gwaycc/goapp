@@ -10,7 +10,7 @@ import (
 
 func main() {
 	fmt.Println("OK")
-	mdb := db.DB("master")
+	mdb := db.GetCache("master")
 	defer mdb.Close()
 
 	fmt.Println("[ctrl+c to exit]")

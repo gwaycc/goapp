@@ -5,7 +5,7 @@ import (
 )
 
 func TestDB(t *testing.T) {
-	mdb, err := HasDB("master")
+	mdb, err := HasCache("master")
 	if err != nil {
 		t.Fatal(err)
 	}
