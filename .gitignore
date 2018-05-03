@@ -15,6 +15,7 @@
 !/Dockerfile
 !/*.sh
 !/*.bash
+!/.vscode
 !/.goget
 !/.gitignore
 
