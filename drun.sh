@@ -1,17 +1,17 @@
 # /bin/sh
 
-PJ_ROOT=$PJ_ROOT
+GOSPACE=$GOSPACE
 PJ_NAME=$PJ_NAME
 
 # debug run
 sudo docker run -it --rm \
-    -v $PJ_ROOT/etc:/app/etc \
-    -v $PJ_ROOT/var/log:/app/var/log \
+    -v $GOSPACE/etc:/app/etc \
+    -v $GOSPACE/var/log:/app/var/log \
     --net=host \
     $PJ_NAME
 
 # # for release
-# PJ_ROOT=`pwd`
+# GOSPACE=`pwd`
 # PJ_NAME="goapp"
 # ver=0.1
 #
@@ -32,7 +32,7 @@ sudo docker run -it --rm \
 #     -v /etc/localtime:/etc/localtime:ro \
 #     -v $pwd_dir/etc:/app/etc \
 #     -v $pwd_dir/var/log:/app/var/log \
-#     -e PJ_ROOT=/app \
+#     -e GOSPACE=/app \
 #     -e GIN_MODE=release \
 #     -w /app/src/service/app \
 #     --name $PJ_NAME-service-app \
@@ -44,7 +44,7 @@ sudo docker run -it --rm \
 #     -v /etc/localtime:/etc/localtime:ro \
 #     -v $pwd_dir/etc:/app/etc \
 #     -v $pwd_dir/var/log:/app/var/log \
-#     -e PJ_ROOT=/app \
+#     -e GOSPACE=/app \
 #     -e GIN_MODE=release \
 #     -w /app/src/applet/web \
 #     --name $PJ_NAME-service-web \

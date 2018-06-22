@@ -18,7 +18,7 @@ CMD ["supd", "-c","/app/etc/supervisord.conf", "-n"]
 pwd_dir=`pwd`
 
 go get -v github.com/gwaylib/goget||exit 1
-mkdir -p $PJ_ROOT/bin/docker||exit 1
+mkdir -p $GOSPACE/bin/docker||exit 1
 
 # build bin data
 export CGO_ENABLED=0 GOOS=linux GOARCH=amd64
@@ -26,8 +26,8 @@ export CGO_ENABLED=0 GOOS=linux GOARCH=amd64
 goget -v -d github.com/gwaycc/supd||exit 1
 cd $GOLIB/src/github.com/gwaycc/supd||exit 1
 go build||exit 1
-mkdir -p $PJ_ROOT/bin/docker||exit 1
-mv ./supd $PJ_ROOT/bin/docker||exit 1
+mkdir -p $GOSPACE/bin/docker||exit 1
+mv ./supd $GOSPACE/bin/docker||exit 1
 cd $pwd_dir
 
 # publish build

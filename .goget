@@ -3,7 +3,7 @@
 # Library version default by go1 tag
 # others version work like gopkg.in version control
 #
-# this is configuration depend on $PJ_ROOT enviorement for looking up the root of project.
+# this is configuration depend on $GOSPACE enviorement for looking up the root of project.
 #
 
 
