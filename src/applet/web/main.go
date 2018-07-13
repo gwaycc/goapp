@@ -32,6 +32,6 @@ func main() {
 	log.Println("Listen: " + addr)
 	log.Fatal(http.ListenAndServe(addr, filter))
 
-	// Test goget package for $GOSPACE/.goget
+	// Test goget package for $PRJ_ROOT/.goget
 	log.Println(context.TODO)
 }

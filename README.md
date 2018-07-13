@@ -69,7 +69,7 @@ func main() {
 ``` text
 $GOROOT -- 编译器放在/usr/local当中，多个版本时，以go1.4，go1.5等进行放置，由项目的env.bash进行切换。
 $GOLIB -- 第一级GOPATH的路径变量，作为公共库存放第三方基础库源码,通过goget来管理。
-$GOSPACE -- 当前项目的所在位置，与$GOLIB同一级。
+$PRJ_ROOT -- 当前项目的所在位置，与$GOLIB同一级。
     .gitignore -- git的忽略管理文件，根据实际项目来看，许多新人会误提交，因此采用守护模式进行工作。
     .goget -- goget配置文件
     env.bash -- 项目环境变量配置，开发时，调souce env.bash可进行项目环境切换。
@@ -88,7 +88,7 @@ $GOSPACE -- 当前项目的所在位置，与$GOLIB同一级。
 
 # 三，GOPATH管理
 ```text
-$GOPATH=$GOLIB:$GOSPACE -- $GOLIB在第一位，以便go get安装第三方库;$GOSPACE是可变的，由env.bash进行切换管理
+$GOPATH=$GOLIB:$PRJ_ROOT -- $GOLIB在第一位，以便go get安装第三方库;$PRJ_ROOT是可变的，由env.bash进行切换管理
 ```
 
 # 四，发布与部署项目
@@ -103,7 +103,7 @@ debian: sudo aptitude install supervisor
 ```text
     # 在需要部署的服务器上下载源码库，并执行以下指令
     
-    cd $GOSPACE
+    cd $PRJ_ROOT
     source env.bash
     # 检查依赖
     sup get all
@@ -121,11 +121,11 @@ debian: sudo aptitude install supervisor
     # 打包版本
     # 若未安装依赖，请先sup get all
     sup publish all
-    cd $GOSPACE/publish
+    cd $PRJ_ROOT/publish
     tar -czf $PJNAME.tar.gz $PJNAME
     # 上传到需要部署的服务器
 
-    cd $GOSPACE
+    cd $PRJ_ROOT
     source env.bash
     # 部署应用
     # 将supervisor的配置文件安装至$SUP_ETC_DIR目录并部署
@@ -154,7 +154,7 @@ source env.bash
     sup tailf [$cfg_name stdout] # 查看输出状态0的输出，等价于 sudo supervisorctrl tail -f $cfg_name stdout
     sup tailf $cfg_name stderr # 查看输出状态非0的输出，等价于 sudo supervisorctrl tail -f $cfg_name stderr
 
-    # 或者进入$GOSPACE/var/log/ 用系统的tail命令查看相关日志文件
+    # 或者进入$PRJ_ROOT/var/log/ 用系统的tail命令查看相关日志文件
 ```
 
 

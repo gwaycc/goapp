@@ -1,18 +1,18 @@
 # /bin/sh
 
-GOSPACE=$GOSPACE
-PJ_NAME=$PJ_NAME
+PRJ_ROOT=$PRJ_ROOT
+PRJ_NAME=$PRJ_NAME
 
 # debug run
 sudo docker run -it --rm \
-    -v $GOSPACE/etc:/app/etc \
-    -v $GOSPACE/var/log:/app/var/log \
+    -v $PRJ_ROOT/etc:/app/etc \
+    -v $PRJ_ROOT/var/log:/app/var/log \
     --net=host \
-    $PJ_NAME
+    $PRJ_NAME
 
 # # for release
-# GOSPACE=`pwd`
-# PJ_NAME="goapp"
+# PRJ_ROOT=`pwd`
+# PRJ_NAME="goapp"
 # ver=0.1
 #
 # # 请手工按步骤调用发布
@@ -23,32 +23,32 @@ sudo docker run -it --rm \
 #
 # # Docker参考资料：https://blog.csdn.net/boonya/article/details/74906927
 # # sudo docker login 
-# # sudo docker tag [imageid] gwaycc/$PJ_NAME:$ver
-# # sudo docker push gwaycc/$PJ_NAME:$ver
+# # sudo docker tag [imageid] gwaycc/$PRJ_NAME:$ver
+# # sudo docker push gwaycc/$PRJ_NAME:$ver
 # 
-# sudo docker pull gwaycc/$PJ_NAME:$ver
+# sudo docker pull gwaycc/$PRJ_NAME:$ver
 # 
 # sudo docker run -d --restart=always \
 #     -v /etc/localtime:/etc/localtime:ro \
 #     -v $pwd_dir/etc:/app/etc \
 #     -v $pwd_dir/var/log:/app/var/log \
-#     -e GOSPACE=/app \
+#     -e PRJ_ROOT=/app \
 #     -e GIN_MODE=release \
 #     -w /app/src/service/app \
-#     --name $PJ_NAME-service-app \
+#     --name $PRJ_NAME-service-app \
 #     --net=host \
-#     gwaycc/$PJ_NAME:$ver \
+#     gwaycc/$PRJ_NAME:$ver \
 #     ./app
 # 
 # sudo docker run -d --restart=always \
 #     -v /etc/localtime:/etc/localtime:ro \
 #     -v $pwd_dir/etc:/app/etc \
 #     -v $pwd_dir/var/log:/app/var/log \
-#     -e GOSPACE=/app \
+#     -e PRJ_ROOT=/app \
 #     -e GIN_MODE=release \
 #     -w /app/src/applet/web \
-#     --name $PJ_NAME-service-web \
+#     --name $PRJ_NAME-service-web \
 #     --net=host \
-#     gwaycc/$PJ_NAME:$ver \
+#     gwaycc/$PRJ_NAME:$ver \
 #     ./web
 
