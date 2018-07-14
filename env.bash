@@ -6,7 +6,7 @@
 # -------------------------------------------------
 export PRJ_ROOT=`pwd`
 export PRJ_NAME="goapp"
-export GOLIB="$(dirname "$PRJ_ROOT")/golib" # 可作为公共库时使用
+export GOLIB="$(dirname "$PRJ_ROOT")/golib" # 作为公共库使用
 export GOPATH=$GOLIB:$PRJ_ROOT
 export GOBIN=$PRJ_ROOT/bin
 
