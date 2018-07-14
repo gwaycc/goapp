@@ -1,17 +1,19 @@
-#!/bin/bash
+#!/bin/sh
 
 echo -n '#' "Your Project Name : "
 read project_name
 
-echo '#!/bin/bash
+echo '#!/bin/sh
 
-# init from https://github.com/gwaycc/goapp/blob/master/init.bash
+# init from https://github.com/gwaycc/goapp/blob/master/init.sh
 
 # 项目需要导出的程序环境变量
 # -------------------------------------------------
 export PRJ_ROOT=`pwd`
 export PRJ_NAME="'$project_name'"
-export GOLIB="$(dirname "$PRJ_ROOT")/golib" # 可作为公共库时使用
+export GOLIB="$(dirname "$PRJ_ROOT")/golib" # 作为公共库使用
+export GOPATH=$GOLIB:$PRJ_ROOT
+export GOBIN=$PRJ_ROOT/bin
 
 # 设定sup [command] all 的遍历目录
 export build_all="$PRJ_ROOT/src/service/app $PRJ_ROOT/src/applet/web"
@@ -22,14 +24,13 @@ export build_all="$PRJ_ROOT/src/service/app $PRJ_ROOT/src/applet/web"
 # 以下是部署时的supervisor默认配置数据，若未配置时，会使用以下默认数据
 # 开发IDE可不配置以下环境变量
 # 配置supervisor的配置文件目录
-export SUP_ETC_DIR="/etc/supervisor/conf.d/"
-# export SUP_ETC_DIR="/etc/supervisord.d/" # for centos
+# export SUP_ETC_DIR="/etc/supervisor/conf.d/" # (可选)
 # 配置supervisor的子程序日志的单个文件最大大小
 export SUP_LOG_SIZE="10MB"
 # 配置supervisor的子程序日志的最多文件个数
 export SUP_LOG_BAK="10"
 # 配置supervisor配置中的environment环境变量
-export SUP_APP_ENV="PRJ_ROOT=\\\"$PRJ_ROOT\\\",GIN_MODE=\\\"release\\\",LD_LIBRARY_PATH=\\\"$LD_LIBRARY_PATH\\\""
+export SUP_APP_ENV="PRJ_ROOT=\\\\\"$PRJ_ROOT\\\\\",GIN_MODE=\\\\\"release\\\\\",LD_LIBRARY_PATH=\\\\\"$LD_LIBRARY_PATH\\\\\""
 # 设定sup [command] all 的遍历目录
 export SUP_BUILD_PATH=$build_all
 # -------------------------------------------------
@@ -39,13 +40,12 @@ export PUB_ROOT_RES="etc" # 根目录下需要打包的文件夹列表，如"etc
 export PUB_APP_RES="public" # app下的文件夹列表，如"res public"等
 
 # 更改路径可更改编译器的版本号, 如果未指定，使用系统默认的配置
-export GOPATH=$GOLIB:$PRJ_ROOT
-export GOBIN=$PRJ_ROOT/bin
 go_root="/usr/local/go"
 if [ -d "$go_root" ]; then
     export GOROOT="$go_root"
 fi
 
+# 将GOBIN加入PATH
 bin_path=$GOBIN:$GOROOT/bin
 if [[ ! $PATH =~ $bin_path ]]; then
 	export PATH=$bin_path:$PATH
@@ -56,7 +56,7 @@ mkdir -p $PRJ_ROOT/src || exit 1
 mkdir -p $PRJ_ROOT/etc || exit 1
 mkdir -p $PRJ_ROOT/var || exit 1
 
-# 下载自定义goget管理工具
+# 下载sup管理工具
 if [ ! -f $GOBIN/sup ]; then
     sup_pkg="github.com/gwaylib/sup"
     go get -u -v $sup_pkg || exit 1
@@ -73,24 +73,24 @@ export github=$GOLIB/src/github.com
 echo "Env have changed to \"$PRJ_NAME\""
 echo "Using \"sup help\" to manage project"
 # -------------------------------------------------
-'>env.bash
+'>env.sh
 
 echo '#' "Init Done"
 echo '#'
-echo '#' "You should edit env.bash when used, some command need special environment."
-echo '#' "'SUP_BUILD_PATH' environment for 'sup build all' in env.bash "
-echo '#' "'SUP_APP_ENV' environment for 'sup install' in env.bash "
-echo '#' "'PUB_ROOT_RES' environment for 'sup publish' in env.bash "
-echo '#' "'PUB_APP_RES' environment for 'sup publish' in env.bash "
+echo '#' "You should edit env.sh when used, some command need special environment."
+echo '#' "'SUP_BUILD_PATH' environment for 'sup build all' in env.sh "
+echo '#' "'SUP_APP_ENV' environment for 'sup install' in env.sh "
+echo '#' "'PUB_ROOT_RES' environment for 'sup publish' in env.sh "
+echo '#' "'PUB_APP_RES' environment for 'sup publish' in env.sh "
 echo '#'
-echo '#' "Using 'source env.bash' to loading environment of project"
+echo '#' "Using 'source env.sh' to loading environment of project"
 
 # This example shows how to prompt for user's input.
 echo -n '#' "Clean template data?[Y/n]"
 read ANS
 case $ANS in
     Y)
-        rm init.bash
+        rm init.sh
         rm -rf .git
 	rm -rf src
         exit 0

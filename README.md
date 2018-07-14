@@ -20,8 +20,8 @@ golang是一门服务器语言，虽然对多平台是支持的，但部署仍�
     cd ~/ws/
     git clone https://github.com/gwaycc/goapp.git test
     cd test
-    ./init.bash # 输入test，输Y新建一个项目，输n保留模板原文件
-    source env.bash
+    ./init.sh # 输入test，输Y新建一个项目，输n保留模板原文件
+    source env.sh
     cd src
     mkdir -p service/app
     cd service/app
@@ -60,19 +60,19 @@ func main() {
     cd ~/ws/
     git clone https://github.com/gwaycc/goapp.git
     cd goapp
-    source env.bash
+    source env.sh
     sup get all # 下载依赖
     sup build all # 编译项目
 ```
     
 # 二，项目结构
 ``` text
-$GOROOT -- 编译器放在/usr/local当中，多个版本时，以go1.4，go1.5等进行放置，由项目的env.bash进行切换。
+$GOROOT -- 编译器放在/usr/local当中，多个版本时，以go1.4，go1.5等进行放置，由项目的env.sh进行切换。
 $GOLIB -- 第一级GOPATH的路径变量，作为公共库存放第三方基础库源码,通过goget来管理。
 $PRJ_ROOT -- 当前项目的所在位置，与$GOLIB同一级。
     .gitignore -- git的忽略管理文件，根据实际项目来看，许多新人会误提交，因此采用守护模式进行工作。
     .goget -- goget配置文件
-    env.bash -- 项目环境变量配置，开发时，调souce env.bash可进行项目环境切换。
+    env.sh -- 项目环境变量配置，开发时，调source env.sh可进行项目环境切换。
     var -- 变量文件存放目录
         -- log 存放supervisor的控制台日志文件。
     etc -- 静态配置文件目录
@@ -88,7 +88,7 @@ $PRJ_ROOT -- 当前项目的所在位置，与$GOLIB同一级。
 
 # 三，GOPATH管理
 ```text
-$GOPATH=$GOLIB:$PRJ_ROOT -- $GOLIB在第一位，以便go get安装第三方库;$PRJ_ROOT是可变的，由env.bash进行切换管理
+$GOPATH=$GOLIB:$PRJ_ROOT -- $GOLIB在第一位，以便go get安装第三方库;$PRJ_ROOT是可变的，由env.sh进行切换管理
 ```
 
 # 四，发布与部署项目
@@ -96,7 +96,7 @@ $GOPATH=$GOLIB:$PRJ_ROOT -- $GOLIB在第一位，以便go get安装第三方库;
 ``` text
 debian: sudo aptitude install supervisor
 
-* 需要时可编辑env.bash的SUP_ETC_DIR目录位置, 该位置用于存放supervisord的配置文件
+* 目前自动识别了Debian与CentOS，其他系统需要时可编辑env.sh的SUP_ETC_DIR目录位置, 该位置用于存放supervisord的配置文件
 
 ```
 ## 2, 源码部署
@@ -104,7 +104,7 @@ debian: sudo aptitude install supervisor
     # 在需要部署的服务器上下载源码库，并执行以下指令
     
     cd $PRJ_ROOT
-    source env.bash
+    source env
     # 检查依赖
     sup get all
     # 编译
@@ -126,7 +126,7 @@ debian: sudo aptitude install supervisor
     # 上传到需要部署的服务器
 
     cd $PRJ_ROOT
-    source env.bash
+    source env.sh
     # 部署应用
     # 将supervisor的配置文件安装至$SUP_ETC_DIR目录并部署
     sup install all
@@ -136,7 +136,7 @@ debian: sudo aptitude install supervisor
 
 ## 4, docker镜像构建的方式
 ```text
-source env.bash
+source env.sh
 ./dbuild.sh
 ```
 
@@ -165,6 +165,6 @@ source env.bash
 
 # 四, 管理发布进程
 ```text
-进入项目根目录，执行source env.bash，使用sup命令进行管理；或者使用supervisorctl命令进行管理进程
+进入项目根目录，执行source env.sh，使用sup命令进行管理；或者使用supervisorctl命令进行管理进程
 ```
 

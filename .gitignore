@@ -2,11 +2,12 @@
 # http://www.lxzhu.net/blogcn/archives/git-gitignore-file
 #
 
-# 关闭以下跟踪
+# 不跟踪这此内容
 *.DS_Store
 /*
 
 # 跟踪以下内容
+!/env
 !/etc
 !/download
 !/doc
@@ -19,33 +20,30 @@
 !/.goget
 !/.gitignore
 
-# 关闭以下跟踪
-/src/*/*
+# 选择性跟踪
+/src/*/*  # 不跟踪这一层
+!/src/vendor/* # 跟踪
+!/src/module/* # 跟踪
+!/src/applet/* # 跟踪
+!/src/service/* # 跟踪
+!/src/testing/* # 跟踪
 
-# 跟踪以下内容
-!/src/vendor/*.*
-!/src/module/*
-!/src/testing/*
-!/src/applet/*
-!/src/service/*
+/src/applet/*/*  # 不跟踪这一层
+!/src/applet/*/*.go # 跟踪
+!/src/applet/*/*.sh # 跟踪
+!/src/applet/*/.gitignore # 跟踪
+!/src/applet/*/Dockerfile # 跟踪
+!/src/applet/*/public # 跟踪
+!/src/applet/*/route # 跟踪
+!/src/applet/*/model # 跟踪
+!/src/applet/*/testing # 跟踪
 
-# 跟踪以下所有文件
-/src/applet/*/*
-!/src/applet/*/*.go
-!/src/applet/*/*.bash
-!/src/applet/*/.gitignore
-!/src/applet/*/Dockerfile
-!/src/applet/*/public
-!/src/applet/*/route
-!/src/applet/*/model
-!/src/applet/*/testing
-
-/src/service/*/*
-!/src/service/*/*.go
-!/src/service/*/*.bash
-!/src/service/*/.gitignore
-!/src/service/*/Dockerfile
-!/src/service/*/public
-!/src/service/*/route
-!/src/service/*/model
-!/src/service/*/testing
+/src/service/*/*  # 不跟踪
+!/src/service/*/*.go # 跟踪
+!/src/service/*/*.sh # 跟踪
+!/src/service/*/.gitignore # 跟踪
+!/src/service/*/Dockerfile # 跟踪
+!/src/service/*/public # 跟踪
+!/src/service/*/route # 跟踪
+!/src/service/*/model # 跟踪
+!/src/service/*/testing # 跟踪

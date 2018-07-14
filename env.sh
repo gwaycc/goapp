@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-# init from https://github.com/gwaycc/goapp/blob/master/init.bash
+# init from https://github.com/gwaycc/goapp/blob/master/init.sh
 
 # 项目需要导出的程序环境变量
 # -------------------------------------------------
@@ -19,8 +19,7 @@ export build_all="$PRJ_ROOT/src/service/app $PRJ_ROOT/src/applet/web"
 # 以下是部署时的supervisor默认配置数据，若未配置时，会使用以下默认数据
 # 开发IDE可不配置以下环境变量
 # 配置supervisor的配置文件目录
-export SUP_ETC_DIR="/etc/supervisor/conf.d/"
-# export SUP_ETC_DIR="/etc/supervisord.d/" # for centos
+# export SUP_ETC_DIR="/etc/supervisor/conf.d/" # (可选)
 # 配置supervisor的子程序日志的单个文件最大大小
 export SUP_LOG_SIZE="10MB"
 # 配置supervisor的子程序日志的最多文件个数
@@ -41,6 +40,7 @@ if [ -d "$go_root" ]; then
     export GOROOT="$go_root"
 fi
 
+# 将GOBIN加入PATH
 bin_path=$GOBIN:$GOROOT/bin
 if [[ ! $PATH =~ $bin_path ]]; then
 	export PATH=$bin_path:$PATH
@@ -51,7 +51,7 @@ mkdir -p $PRJ_ROOT/src || exit 1
 mkdir -p $PRJ_ROOT/etc || exit 1
 mkdir -p $PRJ_ROOT/var || exit 1
 
-# 下载自定义goget管理工具
+# 下载sup管理工具
 if [ ! -f $GOBIN/sup ]; then
     sup_pkg="github.com/gwaylib/sup"
     go get -u -v $sup_pkg || exit 1
