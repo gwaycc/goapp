@@ -7,6 +7,8 @@
 export PRJ_ROOT=`pwd`
 export PRJ_NAME="goapp"
 export GOLIB="$(dirname "$PRJ_ROOT")/golib" # 可作为公共库时使用
+export GOPATH=$GOLIB:$PRJ_ROOT
+export GOBIN=$PRJ_ROOT/bin
 
 # 设定sup [command] all 的遍历目录
 export build_all="$PRJ_ROOT/src/service/app $PRJ_ROOT/src/applet/web"
@@ -34,8 +36,6 @@ export PUB_ROOT_RES="etc" # 根目录下需要打包的文件夹列表，如"etc
 export PUB_APP_RES="public" # app下的文件夹列表，如"res public"等
 
 # 更改路径可更改编译器的版本号, 如果未指定，使用系统默认的配置
-export GOPATH=$GOLIB:$PRJ_ROOT
-export GOBIN=$PRJ_ROOT/bin
 go_root="/usr/local/go"
 if [ -d "$go_root" ]; then
     export GOROOT="$go_root"
