@@ -37,10 +37,12 @@ export BUILD_ALL_PATH="$PRJ_ROOT/src/service/app $PRJ_ROOT/src/applet/web"
 # export PUB_ROOT_RES="etc" # 根目录下需要打包的文件夹列表，如"etc"等
 # export PUB_APP_RES="public" # app下的文件夹列表，如"res public"等
 
-# 更改路径可更改编译器的版本号, 如果未指定，使用系统默认的配置
+# 将GOBIN加入PATH
 go_root="/usr/local/go"
 if [ -d "$go_root" ]; then
     export GOROOT="$go_root"
+else
+	export PATH=$bin_path:${PATH##*$bin_path:} # 如果已存在，重新设定环境环境变量
 fi
 
 # 将GOBIN加入PATH
