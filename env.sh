@@ -44,7 +44,6 @@ if [[ ! $PATH =~ $bin_path ]]; then
     export PATH=$bin_path:$PATH
 else
     export PATH=$bin_path:${PATH##*$bin_path:} # 如果已存在，重新设定环境环境变量
-
 fi
 
 # 构建项目目录
