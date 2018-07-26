@@ -102,8 +102,9 @@ $GOPATH=$GOLIB:$PRJ_ROOT -- $GOLIB在第一位，以便go get安装第三方库;
 ## 1, 在部署的服务器上安装supervior工具
 ``` text
 debian: sudo aptitude install supervisor
+centos: sudo yum install supervisor
 
-* 目前自动识别了Debian与CentOS，其他系统需要时可编辑env.sh的SUP_ETC_DIR目录位置, 该位置用于存放supervisord的配置文件
+* sup目前仅自动识别了Debian与CentOS，其他系统需要时可编辑env.sh的SUP_ETC_DIR目录位置, 该位置用于存放supervisord的配置文件
 
 ```
 ## 2, 源码部署
@@ -117,6 +118,8 @@ debian: sudo aptitude install supervisor
     # 部署应用
     # 将supervisor的配置文件安装至$SUP_ETC_DIR目录并部署
     sup install all
+    # 查看状态
+    sup status
     # 删除supervisor的配置文件安装至$SUP_ETC_DIR目录及部署
     sup clean all
 ```
@@ -127,7 +130,7 @@ debian: sudo aptitude install supervisor
     # 若未安装依赖，请先sup get all
     sup publish all
     cd $PRJ_ROOT/publish
-    tar -czf $PJNAME.tar.gz $PJNAME
+    tar -czf $PRJ_NAME.tar.gz $PRJ_NAME
     # 上传到需要部署的服务器
 
     cd $PRJ_ROOT
@@ -135,6 +138,8 @@ debian: sudo aptitude install supervisor
     # 部署应用
     # 将supervisor的配置文件安装至$SUP_ETC_DIR目录并部署
     sup install all
+    # 查看状态
+    sup status
     # 删除supervisor的配置文件安装至$SUP_ETC_DIR目录及部署
     sup clean all
 ```
