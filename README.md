@@ -1,11 +1,11 @@
 
 # 说明
 
-本项目管理基于多个GOPATH进行管理，在个人实践过程中发现以项目为单位更有利于资源的管理.
+本项目管理基于多个GOPATH进行管理。
 
-当前，包版本依赖的问题可通过依赖工具(例如dep等)或直接复制过来使用即可。
+默认部署采用supervisord。
 
-关于集群部署，请参考[docker](https://yeasy.gitbooks.io/docker_practice/content)，但小项目或项目前期上集群会拖慢项目的调试与迭代速度，建议达到一定规模后再给予考虑。
+集群部署，请参考[docker](https://yeasy.gitbooks.io/docker_practice/content)，但小项目或项目前期上集群会拖慢项目的调试与迭代速度，建议达到一定规模后再给予考虑。
 
 golang是一门服务器语言，虽然对多平台是支持的，但部署仍建议在linux上，本项目管理的阅读设定认为你已经拥有linux下的go基本开发能力后而阅读的。
 
@@ -51,7 +51,10 @@ func main() {
     go build #(若有依赖，可配置.goget自定义库地址并使用sup get拉取)
     ./app
 
-    # 完成
+    # 完成, ctrl+c退出
+    
+    # 构建vendor库依赖
+    sup ensure
 ```
 
 ### 2, 已有的sup项目
@@ -61,7 +64,6 @@ func main() {
     git clone https://github.com/gwaycc/goapp.git
     cd goapp
     source env.sh
-    sup get all # 下载依赖
     sup build all # 编译项目
 ```
     
@@ -84,6 +86,7 @@ $PRJ_ROOT -- 当前项目的所在位置，与$GOLIB同一级。
             -- 服务包名
         -- module 组件层
             -- 组件包名
+        -- vendor 依赖包
 ```
 
 # 三，GOPATH管理
@@ -104,9 +107,7 @@ debian: sudo aptitude install supervisor
     # 在需要部署的服务器上下载源码库，并执行以下指令
     
     cd $PRJ_ROOT
-    source env
-    # 检查依赖
-    sup get all
+    source env.sh
     # 编译
     sup build all
     # 部署应用
