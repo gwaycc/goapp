@@ -7,7 +7,7 @@
 
 docker部署，请参考[docker](https://yeasy.gitbooks.io/docker_practice/content)，但小项目或项目前期上集群会拖慢项目的调试与迭代速度，建议达到一定规模后再给予考虑。
 
-golang是一门服务器语言，虽然对多平台是支持的，但部署仍建议在linux上，本项目管理的阅读设定认为你已经拥有linux下的go基本开发能力后而阅读的。
+golang是系统级语言，当前更多是用于服务器开发，虽然对多平台是支持的，但服务器部署仍建议在linux上，本项目管理的阅读设定认为你已经熟悉基本的linux与go指令。
 
 # GO版本依赖
 go1.10版本及以上
