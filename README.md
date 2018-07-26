@@ -29,24 +29,24 @@ go1.10版本及以上
     cd service/app
 
     # 构建main.go
-    echo "
+    echo '
 package main
 
 import (
-	\"fmt\"
-	\"os\"
-	\"os/signal\"
+	"fmt"
+	"os"
+	"os/signal"
 )
 
 func main() {
-	fmt.Println(\"OK\")
+	fmt.Println("OK")
 
-	fmt.Println(\"[ctrl+c to exit]\")
+	fmt.Println("[ctrl+c to exit]")
 	end := make(chan os.Signal, 2)
 	signal.Notify(end, os.Interrupt, os.Kill)
 	<-end
 }
-    ">main.go
+    '>main.go
 
     # 运行app(开发模式)
     gofmt -w .
