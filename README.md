@@ -56,7 +56,8 @@ func main() {
     # 完成, ctrl+c退出
     
     # 构建vendor库依赖
-    sup ensure
+    cd $PRJ_ROOT/src # 进行源码根目录
+    sup ensure # 执行vendor构建，构建结束后应将vendor内容入当前的版本库, sup指令参考sup help
 ```
 
 ### 2, 已有的sup项目
