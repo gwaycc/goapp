@@ -1,11 +1,11 @@
 
 # 说明
 
-本项目管理基于多个GOPATH进行管理。
+本项目管理基于多个GOPATH进行管理, 使用source env.sh进行环境变量切换。
 
-默认部署采用supervisord。
+本部署默认采用supervisord(目前只自动识别了debian系列及centos系列的配置安装)。
 
-集群部署，请参考[docker](https://yeasy.gitbooks.io/docker_practice/content)，但小项目或项目前期上集群会拖慢项目的调试与迭代速度，建议达到一定规模后再给予考虑。
+docker部署，请参考[docker](https://yeasy.gitbooks.io/docker_practice/content)，但小项目或项目前期上集群会拖慢项目的调试与迭代速度，建议达到一定规模后再给予考虑。
 
 golang是一门服务器语言，虽然对多平台是支持的，但部署仍建议在linux上，本项目管理的阅读设定认为你已经拥有linux下的go基本开发能力后而阅读的。
 
@@ -77,6 +77,7 @@ $GOLIB -- 第一级GOPATH的路径变量，作为公共库存放第三方基础�
 $PRJ_ROOT -- 当前项目的所在位置，与$GOLIB同一级。
     .gitignore -- git的忽略管理文件，根据实际项目来看，许多新人会误提交，因此采用守护模式进行工作。
     .goget -- goget配置文件
+    dbuild.sh -- 构建docker镜像，需先安装docker。
     env.sh -- 项目环境变量配置，开发时，调source env.sh可进行项目环境切换。
     var -- 变量文件存放目录
         -- log 存放supervisor的控制台日志文件。
