@@ -11,7 +11,8 @@ import (
 func main() {
 	fmt.Println("OK")
 	mdb := db.GetCache("master")
-	defer mdb.Close()
+	// defer database.Close(mdb)
+	_ = mdb
 
 	fmt.Println("[ctrl+c to exit]")
 	end := make(chan os.Signal, 2)

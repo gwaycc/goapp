@@ -11,7 +11,7 @@ export GOPATH=$GOLIB:$PRJ_ROOT
 export GOBIN=$PRJ_ROOT/bin
 
 # 设定sup [command] all 所遍历的目录
-export BUILD_ALL_PATH="$PRJ_ROOT/src/service/app $PRJ_ROOT/src/applet/web"
+export BUILD_ALL_PATH="$PRJ_ROOT/src/service/demo $PRJ_ROOT/src/applet/web"
 
 # supervisord配置文件参数
 # --------------------START-------------------
