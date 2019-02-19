@@ -40,7 +40,7 @@ fi
 
 # 将GOBIN加入PATH
 bin_path=$GOBIN:$GOROOT/bin
-if [[ ! $PATH =~ $bin_path ]]; then
+if [[ ! $PATH == *$bin_path* ]]; then
     export PATH=$bin_path:$PATH
 else
     export PATH=$bin_path:${PATH##*$bin_path:} # 如果已存在，重新设定环境环境变量
