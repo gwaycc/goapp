@@ -53,10 +53,8 @@ mkdir -p $PRJ_ROOT/var || exit 0
 
 # 下载sup管理工具
 if [ ! -f $GOBIN/sup ]; then
-    sup_pkg="github.com/gwaylib/sup"
-    go get -u -v $sup_pkg || exit 0
     mkdir -p $GOBIN
-    cp -rf $GOLIB/src/$sup_pkg/sup $GOBIN/ || exit 0
+    wget https://raw.githubusercontent.com/gwaylib/sup/master/sup -O $GOBIN/sup && chmod +x $GOBIN/sup||exit -1
 fi
 
 # 设定git库地址转换, 以便解决私有库中https证书不可信的问题
