@@ -10,7 +10,7 @@ docker部署，请参考[docker](https://yeasy.gitbooks.io/docker_practice/conte
 golang是系统级语言，当前更多是用于服务器开发，虽然对多平台是支持的，但服务器部署仍建议在linux上做，本项目管理的阅读设定认为你已经熟悉基本的linux与go指令。
 
 # GO版本依赖
-go1.10版本及以上
+go1.12版本及以上
 
 # 内容
 
@@ -25,6 +25,7 @@ go1.10版本及以上
     ./init.sh # 输入test，输Y新建一个项目，输n保留模板原文件
     source env.sh
     cd src
+    go mod init goapp
     mkdir -p service/app
     cd service/app
 
@@ -50,14 +51,10 @@ go1.10版本及以上
 
     # 运行app(开发模式)
     gofmt -w .
-    go build #(若有依赖，可配置.goget自定义库地址并使用sup get拉取)
+    go build #(若需要翻墙，执行sup build)
     ./app
 
     # 完成, ctrl+c退出
-    
-    # 构建vendor库依赖
-    cd $PRJ_ROOT/src # 进行源码根目录
-    sup ensure # 执行vendor构建，构建结束后应将vendor内容入当前的版本库, sup指令参考sup help
 ```
 
 ### 2, 已有的sup项目
