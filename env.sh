@@ -15,17 +15,19 @@ export GO111MODULE=on
 export BUILD_ALL_PATH="$PRJ_ROOT/src/service/demo $PRJ_ROOT/src/applet/web"
 
 # supervisord配置文件参数
-# --------------------START-------------------
-# 以下是部署时的supervisor默认配置数据，若未配置时，会使用以下默认数据
-# 开发IDE可不配置以下环境变量
-# 配置supervisor的配置文件目录
-# export SUP_ETC_DIR="/etc/supervisor/conf.d/" # (可选)
-# 配置supervisor的子程序日志的单个文件最大大小
-# export SUP_LOG_SIZE="10MB"
-# 配置supervisor的子程序日志的最多文件个数
-# export SUP_LOG_BAK="10"
-# 配置supervisor配置中的environment环境变量
-# export SUP_APP_ENV="PRJ_ROOT=\\\"$PRJ_ROOT\\\",GIN_MODE=\\\"release\\\",LD_LIBRARY_PATH=\\\"$LD_LIBRARY_PATH\\\""
+## --------------------START-------------------
+## 以下是部署时的supervisor默认配置数据，若未配置时，会使用以下默认数据
+## 开发IDE可不配置以下环境变量
+## 配置supervisor运行的用户，默认为当前用户
+#export SUP_USER=$USER
+## 配置supervisor的配置文件目录
+#export SUP_ETC_DIR="/etc/supervisor/conf.d/" # (可选)
+## 配置supervisor的子程序日志的单个文件最大大小
+#export SUP_LOG_SIZE="10MB"
+## 配置supervisor的子程序日志的最多文件个数
+#export SUP_LOG_BAK="10"
+## 配置supervisor配置中的environment环境变量
+#export SUP_APP_ENV="PRJ_ROOT=\\\"$PRJ_ROOT\\\",GIN_MODE=\\\"release\\\",LD_LIBRARY_PATH=\\\"$LD_LIBRARY_PATH\\\""
 
 # 设定publish指令打包时需要包含的文件夹环境变量
 # -------------------------------------------------
