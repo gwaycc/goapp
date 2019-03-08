@@ -14,6 +14,7 @@ export PRJ_NAME="'$project_name'"
 export GOLIB="$(dirname "$PRJ_ROOT")/golib" # 作为公共库使用
 export GOPATH=$GOLIB:$PRJ_ROOT
 export GOBIN=$PRJ_ROOT/bin
+export GO111MODULE=on
 
 # 设定sup [command] all 所遍历的目录
 export BUILD_ALL_PATH="$PRJ_ROOT/src/service/app $PRJ_ROOT/src/applet/web"
@@ -58,10 +59,8 @@ mkdir -p $PRJ_ROOT/var || exit 0
 
 # 下载sup管理工具
 if [ ! -f $GOBIN/sup ]; then
-    sup_pkg="github.com/gwaylib/sup"
-    go get -u -v $sup_pkg || exit 0
     mkdir -p $GOBIN
-    cp -rf $GOLIB/src/$sup_pkg/sup $GOBIN/ || exit 0
+    wget https://raw.githubusercontent.com/gwaylib/sup/v2.0/sup -O $GOBIN/sup && chmod +x $GOBIN/sup||exit -1
 fi
 
 # 设定git库地址转换, 以便解决私有库中https证书不可信的问题
