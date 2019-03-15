@@ -47,7 +47,7 @@ if [ -d "$go_root" ]; then
 fi
 
 # 将GOBIN加入PATH
-bin_path=$GOBIN:$GOROOT/bin
+bin_path=$GOBIN:$GOROOT/bin:
 if [[ ! $PATH == *$bin_path* ]]; then
     PATH=${PATH/bin_path/""} # 重新设定原值的位置
 fi
