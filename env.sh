@@ -48,11 +48,6 @@ if [[ ! $PATH == *$bin_path* ]]; then
 fi
 export PATH=$bin_path$PATH
 
-# 构建项目目录
-mkdir -p $PRJ_ROOT/src || exit 0
-mkdir -p $PRJ_ROOT/etc || exit 0
-mkdir -p $PRJ_ROOT/var || exit 0
-
 # 下载sup管理工具
 if [ ! -f $GOBIN/sup ]; then
     mkdir -p $GOBIN
@@ -60,7 +55,7 @@ if [ ! -f $GOBIN/sup ]; then
 fi
 
 # 设定git库地址转换, 以便解决私有库中https证书不可信的问题
-# git config --global url."git@git.gwaycc.com:".insteadOf "https://git.gwaycc.com"
+# git config --global url."git@git.gway.cc:".insteadOf "https://git.gway.cc"
 # 用于快速跳转文件变量
 export github=$GOLIB/src/github.com
 # --------------------END--------------------
