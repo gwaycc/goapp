@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"time"
 
-	"applet/web/model/log"
-	_ "applet/web/route"
+	"gwaycc/web/model/log"
+	_ "gwaycc/web/route"
 
 	"golang.org/x/net/context"
 )
