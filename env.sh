@@ -6,13 +6,11 @@
 # -------------------------------------------------
 export PRJ_ROOT=`pwd`
 export PRJ_NAME="goapp"
-export GOLIB="$(dirname "$PRJ_ROOT")/golib" # 作为公共库使用
-export GOPATH=$GOLIB:$PRJ_ROOT
 export GOBIN=$PRJ_ROOT/bin
 export GO111MODULE=on
 
 # 设定sup [command] all 所遍历的目录
-export BUILD_ALL_PATH="$PRJ_ROOT/src/gwaycc/app $PRJ_ROOT/src/gwaycc/web"
+export BUILD_ALL_PATH="$PRJ_ROOT/service/app $PRJ_ROOT/applet/web"
 
 # supervisord配置文件参数
 ## --------------------START-------------------
@@ -31,7 +29,7 @@ export BUILD_ALL_PATH="$PRJ_ROOT/src/gwaycc/app $PRJ_ROOT/src/gwaycc/web"
 
 # 设定publish指令打包时需要包含的文件夹环境变量
 # -------------------------------------------------
-# 默认会打包以下目录：$PRJ_ROOT/bin/* $PRJ_ROOT/src/app/app等二进制程序
+# 默认会打包以下目录：$PRJ_ROOT/bin/* $BUILD_ALL_PATH等二进制程序
 # export PUB_ROOT_RES="etc" # 根目录下需要打包的文件夹列表，如"etc"等
 # export PUB_APP_RES="public" # app下的文件夹列表，如"res public"等
 
@@ -57,8 +55,6 @@ fi
 
 # 设定git库地址转换, 以便解决私有库中https证书不可信的问题
 # git config --global url."git@git.gway.cc:".insteadOf "https://git.gway.cc"
-# 用于快速跳转文件变量
-export github=$GOLIB/src/github.com
 # --------------------END--------------------
 
 echo "Env have changed to \"$PRJ_NAME\""

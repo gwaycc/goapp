@@ -1,7 +1,7 @@
 
 # 说明
 
-本项目管理基于多个GOPATH进行管理, 使用source env.sh进行环境变量切换。
+本项目管理基于go module管理， 使用source env.sh进行环境变量切换。
 
 本部署默认采用supervisord(目前只自动识别了debian系列及centos系列的配置安装)。
 
@@ -24,12 +24,8 @@ go1.12版本及以上
     cd test
     ./init.sh # 输入test，输Y新建一个项目，输n保留模板原文件
     source env.sh
-    mkdir -p src/gwaycc
-    cd src/gwaycc
-    go mod init gwaycc
-    mkdir -p app
-    cd app
-
+    mkdir -p service/app
+    cd service/app
     # 构建main.go
     echo '
         package main
@@ -71,31 +67,25 @@ go1.12版本及以上
 # 二，项目结构
 ``` text
 $GOROOT -- 编译器放在/usr/local当中，多个版本时，以go1.4，go1.5等进行放置，由项目的env.sh进行切换。
-$GOLIB -- 第一级GOPATH的路径变量，作为公共库存放第三方基础库源码,通过goget来管理。
 $PRJ_ROOT -- 当前项目的所在位置，与$GOLIB同一级。
-    .gitignore -- git的忽略管理文件，根据实际项目来看，许多新人会误提交，因此采用守护模式进行工作。
-    .goget -- goget配置文件
+    .gitignore -- git的忽略管理文件。
     dbuild.sh -- 构建docker镜像，需先安装docker。
+    drun.sh   -- 临时运行docker镜像，以便方便调试
     env.sh -- 项目环境变量配置，开发时，调source env.sh可进行项目环境切换。
+    go.mod -- go module依赖数据
+    module 项目专用的组件层
+        -- 组件包名
+    applet 项目的应用main程序
+        -- 应用包名
+    service 内部的服务main程序
+        -- 服务包名
     var -- 变量文件存放目录
         -- log 存放supervisor的控制台日志文件。
     etc -- 静态配置文件目录
     publish -- 非源码部署的项目结构
-    src -- 项目源码。
-        -- gwaycc 子项目名
-            -- vendor 依赖包
-            -- go.mod -- go module依赖数据
-            -- module 组件层
-                -- 组件包名
-            -- 应用包名
 ```
 
-# 三，GOPATH管理
-```text
-$GOPATH=$GOLIB:$PRJ_ROOT -- $GOLIB在第一位，以便go get安装第三方库;$PRJ_ROOT是可变的，由env.sh进行切换管理
-```
-
-# 四，发布与部署项目
+# 三，发布与部署项目
 ## 1, 在部署的服务器上安装supervior工具
 ``` text
 debian: sudo aptitude install supervisor

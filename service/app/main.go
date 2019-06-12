@@ -5,7 +5,7 @@ import (
 	"os"
 	"os/signal"
 
-	"gwaycc/module/db"
+	"goapp/module/db"
 )
 
 func main() {
