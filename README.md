@@ -24,10 +24,11 @@ go1.12版本及以上
     cd test
     ./init.sh # 输入test，输Y新建一个项目，输n保留模板原文件
     source env.sh
-    cd src
-    go mod init goapp
-    mkdir -p service/app
-    cd service/app
+    mkdir -p src/gwaycc
+    cd src/gwaycc
+    go mod init gwaycc
+    mkdir -p app
+    cd app
 
     # 构建main.go
     echo '
@@ -81,13 +82,12 @@ $PRJ_ROOT -- 当前项目的所在位置，与$GOLIB同一级。
     etc -- 静态配置文件目录
     publish -- 非源码部署的项目结构
     src -- 项目源码。
-        -- applet 应用层
+        -- gwaycc 子项目名
+            -- vendor 依赖包
+            -- go.mod -- go module依赖数据
+            -- module 组件层
+                -- 组件包名
             -- 应用包名
-        -- service 服务层
-            -- 服务包名
-        -- module 组件层
-            -- 组件包名
-        -- vendor 依赖包
 ```
 
 # 三，GOPATH管理

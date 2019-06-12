@@ -17,7 +17,7 @@ export GOBIN=$PRJ_ROOT/bin
 export GO111MODULE=on
 
 # 设定sup [command] all 所遍历的目录
-export BUILD_ALL_PATH="$PRJ_ROOT/src/service/demo $PRJ_ROOT/src/applet/web"
+export BUILD_ALL_PATH="$PRJ_ROOT/src/gwaycc/app $PRJ_ROOT/src/gwaycc/web"
 
 # supervisord配置文件参数
 ## --------------------START-------------------
