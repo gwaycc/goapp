@@ -49,7 +49,7 @@ export PATH=$bin_path$PATH
 # 下载sup管理工具
 if [ ! -f $GOBIN/sup ]; then
     mkdir -p $GOBIN&& \
-    curl https://raw.githubusercontent.com/gwaylib/sup/v2.0.1/sup -o $GOBIN/sup && \
+    curl https://raw.githubusercontent.com/gwaylib/sup/v2/sup -o $GOBIN/sup && \
     chmod +x $GOBIN/sup&&echo "Download sup done."||exit 1
 fi
 
