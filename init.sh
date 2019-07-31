@@ -17,8 +17,7 @@ export PATH=$bin_path$PATH
 echo -n '#' "Your Project Name : "
 read project_name
 
-echo $project_name
-cat env.sh|awk '{print gensub("goapp","'$project_name'",1)}'>tmp.sh
+cat env.sh|awk '{print gensub("\"goapp\"","\"'$project_name'\"",1)}'>tmp.sh
 cp tmp.sh env.sh
 rm tmp.sh
 

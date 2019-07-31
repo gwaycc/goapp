@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# init from https://github.com/gwaycc/goapp/blob/master/init.sh
+# Template from https://github.com/gwaycc/goapp
 
 # 项目需要导出的程序环境变量
 # -------------------------------------------------
