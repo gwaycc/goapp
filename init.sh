@@ -1,5 +1,18 @@
 #!/bin/sh
 
+export GO111MODULE=on
+go_root="/usr/local/go"
+if [ -d "$go_root" ]; then
+    export GOROOT="$go_root"
+fi
+# 将GOBIN加入PATH
+bin_path=$GOBIN:$GOROOT/bin:
+if [[ ! $PATH == *$bin_path* ]]; then
+    PATH=${PATH/bin_path/""} # 重新设定原值的位置
+fi
+export PATH=$bin_path$PATH
+
+
 echo -n '#' "Your Project Name : "
 read project_name
 
