@@ -41,16 +41,20 @@ fi
 
 # 将GOBIN加入PATH
 bin_path=$GOBIN:$GOROOT/bin:
-if [[ ! $PATH == *$bin_path* ]]; then
-    PATH=${PATH/bin_path/""} # 重新设定原值的位置
+
+rep=$(echo $PATH|awk '{print gensub("'$bin_path'","",1)}')
+if [ ! "$PATH" = "$rep" ]; then
+    PATH=$rep # 重新设定原值的位置
 fi
 export PATH=$bin_path$PATH
 
 # 下载sup管理工具
 if [ ! -f $GOBIN/sup ]; then
+    type curl >/dev/null 2>&1||{ echo -e >&2 "curl not found, need install at first."; exit 0; }
+    echo "Download sup to bin."
     mkdir -p $GOBIN&& \
     curl https://raw.githubusercontent.com/gwaylib/sup/v2/sup -o $GOBIN/sup && \
-    chmod +x $GOBIN/sup&&echo "Download sup done."||exit 1
+    chmod +x $GOBIN/sup&&echo "Download sup done."|| exit 0
 fi
 
 # 设定git库地址转换, 以便解决私有库中https证书不可信的问题
