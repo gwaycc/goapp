@@ -23,13 +23,9 @@ rm tmp.sh
 
 echo '#' "Init Done"
 echo '#'
-echo '#' "You should edit env.sh when used, some command need special environment."
-echo '#' "'SUP_BUILD_PATH' environment for 'sup build all' in env.sh "
-echo '#' "'SUP_APP_ENV' environment for 'sup install' in env.sh "
-echo '#' "'PUB_ROOT_RES' environment for 'sup publish' in env.sh "
-echo '#' "'PUB_APP_RES' environment for 'sup publish' in env.sh "
+echo '#' "Using '. env.sh' to loading environment of project."
+echo '#' "Then using 'sup help' for building help."
 echo '#'
-echo '#' "Using 'source env.sh' to loading environment of project"
 
 # This example shows how to prompt for user's input.
 echo -n '#' "Clean template data?[Y/n]"
