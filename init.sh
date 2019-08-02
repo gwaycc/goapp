@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 export GO111MODULE=on
 go_root="/usr/local/go"
@@ -8,7 +8,7 @@ fi
 # 将GOBIN加入PATH
 bin_path=$GOROOT/bin:
 
-rep=$(echo $PATH|awk '{print gensub("'$bin_path'","",1)}')
+rep=${PATH/bin_path/""}
 if [ ! "$PATH" = "$rep" ]; then
     PATH=$rep # 重新设定原值的位置
 fi
