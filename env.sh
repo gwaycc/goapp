@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Template from https://github.com/gwaycc/goapp
 
@@ -42,7 +42,7 @@ fi
 # 将GOBIN加入PATH
 bin_path=$GOBIN:$GOROOT/bin:
 
-rep=$(echo $PATH|awk -vp=$bin_path '{print gensub($p,"",1)}')
+rep=${PATH/bin_path/""}
 if [ ! "$PATH" = "$rep" ]; then
     PATH=$rep # 重新设定原值的位置
 fi
