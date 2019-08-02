@@ -42,7 +42,7 @@ fi
 # 将GOBIN加入PATH
 bin_path=$GOBIN:$GOROOT/bin:
 
-rep=$(echo $PATH|awk '{print gensub("'$bin_path'","",1)}')
+rep=$(echo $PATH|awk -vp=$bin_path '{print gensub($p,"",1)}')
 if [ ! "$PATH" = "$rep" ]; then
     PATH=$rep # 重新设定原值的位置
 fi
