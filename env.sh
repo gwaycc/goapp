@@ -30,8 +30,8 @@ export BUILD_ALL_PATH="$PRJ_ROOT/service/app $PRJ_ROOT/applet/web"
 # 设定publish指令打包时需要包含的文件夹环境变量
 # -------------------------------------------------
 # 默认会打包以下目录：$PRJ_ROOT/bin/* $BUILD_ALL_PATH等二进制程序
-# export PUB_ROOT_RES="etc" # 根目录下需要打包的文件夹列表，如"etc"等
-# export PUB_APP_RES="public" # app下的文件夹列表，如"res public"等
+# export PUB_ROOT_RES="etc" # 根目录下需要打包的文件夹列表，如"etc"等, 空格字符串表示不使用
+# export PUB_APP_RES="public" # app下的文件夹列表，如"res public"等, 空格字符串表示不使用
 
 # 更改路径可更改编译器的版本号, 如果未指定，使用系统默认的配置
 go_root="/usr/local/go"
