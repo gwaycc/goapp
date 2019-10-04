@@ -51,6 +51,10 @@ if [ ! -f $GOBIN/sup ]; then
     mkdir -p $GOBIN&& \
     curl https://raw.githubusercontent.com/gwaycc/supd/v1/bin/sup -o $GOBIN/sup && \
     chmod +x $GOBIN/sup&&echo "Download sup done."|| exit 0
+
+    # Close golang verify
+    go env -w GOPROXY=direct
+    go env -w GOSUMDB=off
 fi
 # --------------------END--------------------
 
