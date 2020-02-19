@@ -58,7 +58,7 @@ if [ ! -f $GOBIN/sup ]; then
 fi
 # --------------------END--------------------
 
-echo "Env have changed to \"$PRJ_NAME\""
+echo "Envs have set to \"$PRJ_NAME\""
 echo "Using \"sup help\" to manage project"
 # -------------------------------------------------
 
