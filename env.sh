@@ -10,7 +10,7 @@ export GOBIN=$PRJ_ROOT/bin
 export GO111MODULE=on
 
 # Setting directory of sup [command] all, split with space for multiply directory.
-export BUILD_ALL_PATH="$PRJ_ROOT/service/app $PRJ_ROOT/applet/web"
+export BUILD_ALL_PATH="$PRJ_ROOT/cmd/app $PRJ_ROOT/cmd/web"
 
 # Setting supd program params configuration
 ## --------------------START-------------------

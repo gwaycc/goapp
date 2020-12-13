@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"time"
 
-	"goapp/applet/web/model/log"
-	_ "goapp/applet/web/route"
+	"goapp/cmd/web/model/log"
+	_ "goapp/cmd/web/route"
 
 	"golang.org/x/net/context"
 )

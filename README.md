@@ -1,9 +1,9 @@
 
 # 说明
 
-本项目管理基于go module管理， 使用source env.sh进行环境变量切换。
+本项目管理基于go module管理， 使用. env.sh 或 source env.sh进行环境变量切换。
 
-本部署默认采用supervisord(目前只自动识别了debian系列及centos系列的配置安装)。
+本部署默认采用supd(目前只自动识别了debian系列及centos系列的配置安装)。
 
 docker部署，请参考[docker](https://yeasy.gitbooks.io/docker_practice/content)，但小项目或项目前期上集群会拖慢项目的调试与迭代速度，建议达到一定规模后再给予考虑。
 
@@ -23,9 +23,9 @@ go1.12版本及以上
     git clone https://github.com/gwaycc/goapp.git test
     cd test
     ./init.sh # 输入test，输Y新建一个项目，输n保留模板原文件
-    source env.sh
-    mkdir -p service/app
-    cd service/app
+    . env.sh # 或source env.sh
+    mkdir -p cmd/app
+    cd cmd/app
     # 构建main.go
     echo '
         package main
@@ -48,10 +48,10 @@ go1.12版本及以上
 
     # 运行app(开发模式)
     gofmt -w .
-    go build #(若需要翻墙，执行sup build)
+    go build #(或执行sup build)
     ./app
 
-    # 完成, ctrl+c退出
+    # ctrl+c退出
 ```
 
 ### 2, 已有的sup项目
@@ -75,25 +75,21 @@ $PRJ_ROOT -- 当前项目的所在位置，与$GOLIB同一级。
     go.mod -- go module依赖数据
     module 项目专用的组件层
         -- 组件包名
-    applet 项目的应用main程序
+    cmd 项目的应用main程序
         -- 应用包名
-    service 内部的服务main程序
-        -- 服务包名
     var -- 变量文件存放目录
-        -- log 存放supervisor的控制台日志文件。
+        -- log 存放supd的控制台日志文件。
     etc -- 静态配置文件目录
     publish -- 非源码部署的项目结构
 ```
 
 # 三，发布与部署项目
-## 1, 在部署的服务器上安装supervior工具
-``` text
-debian: sudo aptitude install supervisor
-centos: sudo yum install supervisor
+## 1, 在部署的服务器上安装supd工具
+
+https://github.com/gwaycc/supd
 
 * sup目前仅自动识别了Debian与CentOS，其他系统需要时可编辑env.sh的SUP_ETC_DIR目录位置, 该位置用于存放supervisord的配置文件
 
-```
 ## 2, 源码部署
 ```text
     # 在需要部署的服务器上下载源码库，并执行以下指令
@@ -146,10 +142,10 @@ source env.sh
 
 ## 6, 部署时的控制台日志查看
 ```text
-    sup tail [$cfg_name stdout] # 查看输出状态0的输出，等价于 sudo supervisorctrl tail $cfg_name stdout
-    sup tail $cfg_name stderr # 查看输出状态非0的输出，等价于 sudo supervisorctrl tail $cfg_name stderr
-    sup tailf [$cfg_name stdout] # 查看输出状态0的输出，等价于 sudo supervisorctrl tail -f $cfg_name stdout
-    sup tailf $cfg_name stderr # 查看输出状态非0的输出，等价于 sudo supervisorctrl tail -f $cfg_name stderr
+    sup tail [$cfg_name stdout] # 查看输出状态0的输出，等价于 sudo supd ctl tail $cfg_name stdout
+    sup tail $cfg_name stderr # 查看输出状态非0的输出，等价于 sudo supd ctl tail $cfg_name stderr
+    sup tailf [$cfg_name stdout] # 查看输出状态0的输出，等价于 sudo supd ctl tail -f $cfg_name stdout
+    sup tailf $cfg_name stderr # 查看输出状态非0的输出，等价于 sudo supd ctl tail -f $cfg_name stderr
 
     # 或者进入$PRJ_ROOT/var/log/ 用系统的tail命令查看相关日志文件
 ```
@@ -157,11 +153,6 @@ source env.sh
 
 ## 其他详见sup help
 ```text
-详情参考https://github.com/gwaycc/sup
-```
-
-# 四, 管理发布进程
-```text
-进入项目根目录，执行source env.sh，使用sup命令进行管理；或者使用supervisorctl命令进行管理进程
+详情参考https://github.com/gwaycc/supd
 ```
 
