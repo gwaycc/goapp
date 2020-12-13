@@ -49,12 +49,8 @@ if [ ! -f $GOBIN/sup ]; then
     type curl >/dev/null 2>&1||{ echo -e >&2 "curl not found, need install at first."; exit 0; }
     echo "Download sup to bin."
     mkdir -p $GOBIN&& \
-    curl https://raw.githubusercontent.com/gwaycc/supd/v1/bin/sup -o $GOBIN/sup && \
+    curl https://raw.githubusercontent.com/gwaycc/supd/v1.0.3/bin/sup -o $GOBIN/sup && \
     chmod +x $GOBIN/sup&&echo "Download sup done."|| exit 0
-
-    # Close golang verify
-    go env -w GOPROXY=direct
-    go env -w GOSUMDB=off
 fi
 # --------------------END--------------------
 
