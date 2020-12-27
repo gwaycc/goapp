@@ -43,18 +43,21 @@ if [ ! "$PATH" = "$rep" ]; then
 fi
 export PATH=$bin_path$PATH
 
-# Download sup to manage project
-# -------------------------------------------------
-if [ ! -f $GOBIN/sup ]; then
-    type curl >/dev/null 2>&1||{ echo -e >&2 "curl not found, need install at first."; exit 0; }
-    echo "Download sup to bin."
-    mkdir -p $GOBIN&& \
-    curl https://raw.githubusercontent.com/gwaycc/supd/v1.0.3/bin/sup -o $GOBIN/sup && \
-    chmod +x $GOBIN/sup&&echo "Download sup done."|| exit 0
-fi
-# --------------------END--------------------
+main(){
+    # Download sup to manage project
+    # -------------------------------------------------
+    if [ ! -f $GOBIN/sup ]; then
+        type curl >/dev/null 2>&1||{ echo -e >&2 "curl not found, need install at first."; return 1; }
+        echo "Download sup to bin."
+        mkdir -p $GOBIN&& \
+        curl https://raw.githubusercontent.com/gwaycc/supd/v1.0.3/bin/sup -o $GOBIN/sup && \
+        chmod +x $GOBIN/sup&&echo "Download sup done."|| return 1
+    fi
+    # --------------------END--------------------
+    
+    echo "Envs have set to \"$PRJ_NAME\""
+    echo "Using \"sup help\" to manage project"
+    # -------------------------------------------------
+}
 
-echo "Envs have set to \"$PRJ_NAME\""
-echo "Using \"sup help\" to manage project"
-# -------------------------------------------------
-
+main||echo "Check env failed"
