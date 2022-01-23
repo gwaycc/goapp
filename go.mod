@@ -13,5 +13,6 @@ require (
 	github.com/kardianos/osext v0.0.0-20190222173326-2bc1f35cddc0 // indirect
 	github.com/labstack/gommon v0.2.8
 	github.com/mattn/go-colorable v0.1.2 // indirect
+	github.com/urfave/cli/v2 v2.3.0
 	golang.org/x/net v0.0.0-20190603091049-60506f45cf65
 )
