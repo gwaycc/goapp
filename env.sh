@@ -11,7 +11,7 @@ export GO111MODULE=on
 
 # Setting directory of sup [command] all, split with space for multiply directory.
 export BUILD_ALL_PATH="$PRJ_ROOT/cmd/app $PRJ_ROOT/cmd/web"
-export BUILD_GIT_COMMIT="goapp/version.GitCommit" # 'sup build' should should fill this var
+export BUILD_GIT_COMMIT=$PRJ_NAME"/version.GitCommit" # 'sup build' should should fill this var
 export BUILD_LDFLAGS="" # set go ldflags if need
 
 # Setting supd program params configuration
