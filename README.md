@@ -128,8 +128,9 @@ https://github.com/gwaycc/supd
 ```
 
 ## 4, docker镜像构建的方式
+需要首先安装docker
 ```text
-source env.sh
+. env.sh
 ./dbuild.sh
 ```
 
