@@ -25,7 +25,7 @@ export SUP_APP_ENV="PRJ_ROOT=\\\"$PRJ_ROOT\\\",GIN_MODE=\\\"release\\\",LD_LIBRA
 # Seting collection to sup publish
 # -------------------------------------------------
 ## Root directory to colect of project. default is etc, split with space for multiply directory.
-export PUB_ROOT_RES="etc" 
+export PUB_ROOT_RES="etc bin" 
 ## App directory to colect of application. default is public, split with space for multiply directory.
 export PUB_APP_RES="public" 
 
