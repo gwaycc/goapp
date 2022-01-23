@@ -15,13 +15,8 @@ sudo docker run -it --rm \
 # PRJ_NAME="goapp"
 # ver=0.1
 #
-# # 请手工按步骤调用发布
-# # 阿里参考资料：https://help.aliyun.com/document_detail/51810.html?spm=5176.11065259.1996646101.searchclickresult.260e6e5cpqIABR
-# #  sudo docker login --username=zhoushuyue@codein registry.cn-shenzhen.aliyuncs.com
-# #  sudo docker tag [ImageId] registry.cn-shenzhen.aliyuncs.com/codein/lserver:[镜像版本号]
-# #  sudo docker push registry.cn-shenzhen.aliyuncs.com/codein/lserver:[镜像版本号]
-#
-# # Docker参考资料：https://blog.csdn.net/boonya/article/details/74906927
+# # Publish docker: https://help.aliyun.com/document_detail/51810.html?spm=5176.11065259.1996646101.searchclickresult.260e6e5cpqIABR
+# # Docker build：https://blog.csdn.net/boonya/article/details/74906927
 # # sudo docker login 
 # # sudo docker tag [imageid] gwaycc/$PRJ_NAME:$ver
 # # sudo docker push gwaycc/$PRJ_NAME:$ver
@@ -34,8 +29,8 @@ sudo docker run -it --rm \
 #     -v $pwd_dir/var/log:/app/var/log \
 #     -e PRJ_ROOT=/app \
 #     -e GIN_MODE=release \
-#     -w /app/src/service/app \
-#     --name $PRJ_NAME-service-app \
+#     -w /app/cmd/app \
+#     --name $PRJ_NAME.cmd.app \
 #     --net=host \
 #     gwaycc/$PRJ_NAME:$ver \
 #     ./app
@@ -47,7 +42,7 @@ sudo docker run -it --rm \
 #     -e PRJ_ROOT=/app \
 #     -e GIN_MODE=release \
 #     -w /app/src/applet/web \
-#     --name $PRJ_NAME-service-web \
+#     --name $PRJ_NAME.cmd.web \
 #     --net=host \
 #     gwaycc/$PRJ_NAME:$ver \
 #     ./web
