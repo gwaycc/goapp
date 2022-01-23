@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"time"
 
-	"goapp/cmd/web/model/log"
-	_ "goapp/cmd/web/route"
+	"github.com/gwaycc/goapp/cmd/web/model/log"
+	_ "github.com/gwaycc/goapp/cmd/web/route"
 
 	"golang.org/x/net/context"
 )
