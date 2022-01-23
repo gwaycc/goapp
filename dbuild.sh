@@ -9,7 +9,7 @@ RUN apk add --update ca-certificates
 RUN mkdir -p /app/var/log/
 COPY ./publish/'$PRJ_NAME' /app
 
-CMD ["/app/bin/supd", "-c","/app/etc/supd.conf", "-n"]
+CMD ["/app/bin/supd", "-c","/app/etc/supd.conf"]
 '>Dockerfile
 
 
