@@ -6,10 +6,11 @@ import (
 	"os/signal"
 
 	"goapp/module/db"
+	"goapp/version"
 )
 
 func main() {
-	fmt.Println("OK")
+	fmt.Println("git commit:", version.GitCommit)
 	mdb := db.GetCache("master")
 	// defer database.Close(mdb)
 	_ = mdb
