@@ -20,7 +20,7 @@ export SUP_USER=$USER # default is $USER
 export SUP_ETC_DIR="/etc/supd/conf.d" # default is /etc/supd/conf.d
 export SUP_LOG_SIZE="10MB"
 export SUP_LOG_BAK="10"
-export SUP_APP_ENV="PRJ_ROOT=\\\"$PRJ_ROOT\\\",GIN_MODE=\\\"release\\\",LD_LIBRARY_PATH=\\\"$LD_LIBRARY_PATH\\\""
+export SUP_APP_ENV="PRJ_ROOT=\\\"$PRJ_ROOT\\\",GWAYLIB_LOG_LEVEL=1,GIN_MODE=\\\"release\\\",LD_LIBRARY_PATH=\\\"$LD_LIBRARY_PATH\\\""
 
 # Seting collection to sup publish
 # -------------------------------------------------
