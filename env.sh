@@ -52,7 +52,7 @@ main(){
         echo "Download sup to bin."
         mkdir -p $GOBIN&& \
         #curl https://raw.githubusercontent.com/gwaycc/supd/master/bin/sup -o $GOBIN/sup && \
-        curl https://raw.githubusercontent.com/gwaycc/supd/v1.0.6/bin/sup -o $GOBIN/sup && \
+        curl https://raw.githubusercontent.com/gwaycc/supd/v1.0.7/bin/sup -o $GOBIN/sup && \
         chmod +x $GOBIN/sup&&echo "Download sup done."|| return 1
     fi
     # --------------------END--------------------
