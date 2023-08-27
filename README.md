@@ -6,7 +6,7 @@ This project is a template for building a new go project with go module manageme
 Have been test with debian, centos, mac os.
 
 # Dependency
-go1.12 or later
+go1.13 or later
 
 # Building a new project
 ``` text
