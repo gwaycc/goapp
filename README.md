@@ -10,37 +10,37 @@ go1.13 or later
 
 # Building a new project
 ``` text
-    # clone the template to a new project
-    git clone https://github.com/gwaycc/goapp.git test
-    cd test
-    ./init.sh  
-    . env.sh # Or source env.sh
-    mkdir -p cmd/app
-    cd cmd/app
-    echo '
-        package main
-        
-        import (
-        	"fmt"
-        	"os"
-        	"os/signal"
-        )
-        
-        func main() {
-        	fmt.Println("OK")
-        
-        	fmt.Println("[ctrl+c to exit]")
-        	end := make(chan os.Signal, 2)
-        	signal.Notify(end, os.Interrupt, os.Kill)
-        	<-end
-        }
-    '>main.go
+# clone the template to a new project
+git clone https://github.com/gwaycc/goapp.git test
+cd test
+./init.sh  
+. env.sh # Or source env.sh
+mkdir -p cmd/app
+cd cmd/app
+echo '
+    package main
+    
+    import (
+    	"fmt"
+    	"os"
+    	"os/signal"
+    )
+    
+    func main() {
+    	fmt.Println("OK")
+    
+    	fmt.Println("[ctrl+c to exit]")
+    	end := make(chan os.Signal, 2)
+    	signal.Notify(end, os.Interrupt, os.Kill)
+    	<-end
+    }
+'>main.go
 
-    gofmt -w .
-    go build # Or sup build
-    ./app
+gofmt -w .
+go build # Or sup build
+./app
 
-    # ctrl+c
+# ctrl+c
 ```
     
 # File structure
@@ -73,24 +73,24 @@ See [supd](https://github.com/gwaycc/supd)
 
 Install the binary with source code
 ```shell
-    . env.sh
-    sup build all # $BUILD_ALL_PATH paths
+. env.sh
+sup build all # $BUILD_ALL_PATH paths
 
-    sup install all # install all binary of $BUILD_ALL_PATH in env.sh
-    sup status # running status
-    sup clean all # remove the binary installed
+sup install all # install all binary of $BUILD_ALL_PATH in env.sh
+sup status # running status
+sup clean all # remove the binary installed
 ```
 
 Publish project binary
 ```
-    . env.sh
-    ./publish.sh # the binary copy is output in publish directory.
+. env.sh
+./publish.sh # the binary copy is output in publish directory.
 
-    cd publish/$PRJ_NAME # Or copy the release file to the deployment server.
-    . env.sh
-    sup install all # install all binary of $BUILD_ALL_PATH in env.sh 
-    sup status # running status
-    sup clean all # remove the binary installed
+cd publish/$PRJ_NAME # Or copy the release file to the deployment server.
+. env.sh
+sup install all # install all binary of $BUILD_ALL_PATH in env.sh 
+sup status # running status
+sup clean all # remove the binary installed
 ```
 
 ## Building docker image
@@ -102,18 +102,18 @@ sudo aptitude install docker.io
 
 ## Online debug mode
 ```shell
-    cd $PRJ_ROOT/cmd/app
-    sup stop # stop the program in supd.
-    ./app # run the the program in the console.
+cd $PRJ_ROOT/cmd/app
+sup stop # stop the program in supd.
+./app # run the the program in the console.
 ```
 
 ## Some improved commands of supc
 ```text
-    sup tail [$cfg_name stdout] # sudo supd ctl tail $cfg_name stdout
-    sup tail $cfg_name stderr # sudo supd ctl tail $cfg_name stderr
-    sup tailf [$cfg_name stdout] # sudo supd ctl tail -f $cfg_name stdout
-    sup tailf $cfg_name stderr # sudo supd ctl tail -f $cfg_name stderr
+sup tail [$cfg_name stdout] # sudo supd ctl tail $cfg_name stdout
+sup tail $cfg_name stderr # sudo supd ctl tail $cfg_name stderr
+sup tailf [$cfg_name stdout] # sudo supd ctl tail -f $cfg_name stdout
+sup tailf $cfg_name stderr # sudo supd ctl tail -f $cfg_name stderr
 
-    # More logs see $PRJ_ROOT/var/log/ 
-    # Or see sup help
+# More logs see $PRJ_ROOT/var/log/ 
+# Or see sup help
 ```
