@@ -43,17 +43,17 @@ go1.12 or later
     # ctrl+c
 ```
     
-# File structure description
+# File structure
 ``` text
-$GOROOT -- root of golang。
-$PRJ_ROOT -- root of prject, it's set in env.sh
+$GOROOT -- Root path of golang。
+$PRJ_ROOT -- root path of prject, it will auto set in env.sh
     .gitignore -- gitignore file
     dbuild.sh -- deployment shell for building docker image
     drun.sh   -- shell for running docker image 
     env.sh -- environment variable of project
     go.mod -- go module
-    var -- some temp files of this project .
-    etc -- etc files of this project
+    var -- some temp files of this project ran.
+    etc -- etc files resource. 
     publish -- publish files when called ./publish.sh
 ```
 
