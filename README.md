@@ -1,11 +1,11 @@
 
 # Instruction
 
-This project is template for building a new go project with go module management, using `. env.sh` or `source env.sh` for setting the project environment variable.
+This project is a template for building a new go project with go module management, using `. env.sh` or `source env.sh` for setting the project environment variable.
 
 Have been test with debian, centos, mac os.
 
-# Version dependency
+# Dependency
 go1.12 or later
 
 # Building a new project
